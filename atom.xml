@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2021-07-08T08:43:45.159Z</updated>
+    <updated>2021-07-08T08:48:18.094Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Gridea博客搭建流程]]></title>
+        <id>https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/</id>
+        <link href="https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/">
+        </link>
+        <updated>2021-07-08T08:44:10.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="github-pages">Github Pages</h1>
+<ul>
+<li>首先在github新建一个用户名相同的仓库，用户名.github.io</li>
+<li>然后确认自己的github已经开通了github服务。</li>
+</ul>
+<h1 id="gridea客户端">Gridea客户端</h1>
+<h1 id="proxifier全局代理">Proxifier全局代理</h1>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://loycine.github.io/post/hello-gridea/</id>
