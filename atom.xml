@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2021-07-08T09:03:13.686Z</updated>
+    <updated>2021-07-08T09:15:14.464Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -18,12 +18,29 @@
         <updated>2021-07-08T08:44:10.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
 <h1 id="github-pages">Github Pages</h1>
+<h2 id="创建仓库">创建仓库</h2>
 <ul>
 <li>首先在github新建一个用户名相同的仓库，用户名.github.io</li>
-<li>然后确认自己的github已经开通了github服务。</li>
+<li>然后在setting中确认自己的github已经开通了github服务。</li>
+</ul>
+<h2 id="创建token">创建token</h2>
+<ul>
+<li>github创建token，勾选上repo权限。</li>
+</ul>
+<h2 id="开启文章评论">开启文章评论</h2>
+<ul>
+<li>创建github OAuth Application，然后将Client ID和Client Secret复制到本地。</li>
 </ul>
 <h1 id="gridea客户端">Gridea客户端</h1>
+<ul>
+<li>在Gridea的配置-基础配置中填写相应的配置来配置同步。</li>
+<li>在Gridea的配置-评论配置中填写相应的评论，评论是Gitalk的，是基于Github Issue和Preact开发的评论插件。</li>
+</ul>
 <h1 id="proxifier全局代理">Proxifier全局代理</h1>
+<p>因为Gridea常常连不上Github，所以搭建Socks5代理然后搭建Proxifier进行远程同步。<br>
+在Github中设置Profile- Proxy Servers 和 Profile- Proxification Rules。</p>
+<h1 id="reference">Reference</h1>
+<p>[1] <a href="https://zhuanlan.zhihu.com/p/71681116">Gridea 上手教程——小白也可以用的 GitHub Pages 搭建工具</a></p>
 ]]></content>
     </entry>
     <entry>
