@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | 罗宇成的博客</title>
+<title>科研小站-vscode调试篇（1） | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,15 +24,13 @@
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="生成调试配置文件launch.json
+首先点击运行符号和甲壳虫符号-运行，生成python的配置文件
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -113,45 +111,66 @@ Gridea 主页
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
-            
-              <div class="feature-container" style="background-image: url('https://loycine.github.io/post-images/hello-gridea.png')">
-              </div>
+            <h2 class="post-title">科研小站-vscode调试篇（1）</h2>
+            <div class="post-date">2021-09-16</div>
             
             <div class="post-content" v-pre>
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <h2 id="生成调试配置文件launchjson">生成调试配置文件launch.json</h2>
+<p>首先点击运行符号和甲壳虫符号-运行，生成python的配置文件</p>
+<pre><code class="language-json">{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Python: ckr&quot;,
+            &quot;type&quot;: &quot;python&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;train.py&quot;,
+            &quot;args&quot;: [&quot;--experiment_name&quot;,&quot;check-train-1&quot;,&quot;--feedback_method&quot;,&quot;sample2step&quot;,&quot;--instruction_from&quot;,&quot;reverie&quot;,&quot;--batch_size=100&quot;,&quot;--en_nhead&quot;,&quot;6&quot;,&quot;--en_nlayer&quot;,&quot;2&quot;,&quot;--use_glove&quot;,&quot;--num_multihead&quot;,&quot;8&quot;,&quot;--num_layer&quot;,&quot;4&quot;,&quot;--max_degree&quot;,&quot;15&quot;,&quot;--object_top_n&quot;,&quot;5&quot;,&quot;--short_cut&quot;,&quot;--num_gcn&quot;,&quot;3&quot;,&quot;--use_angle_distance_reward&quot;,&quot;--soft_room_label&quot;,&quot;--loss_weight&quot;,&quot;5&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;],
+            &quot;env&quot;: {&quot;CUDA_VISIBLE_DEVICES&quot;: &quot;0&quot;},
+            &quot;console&quot;: &quot;integratedTerminal&quot;
+        }
+    ]
+}
+</code></pre>
+<p>其中name是随意取的，program是要运行的文件，args是运行的参数，env是运行的环境变量。</p>
+<h2 id="对args进行处理">对args进行处理</h2>
+<p>args要是字符串数组，字符串要用引号包括，用逗号分割，这就需要我们对命令行参数进行处理。</p>
+<pre><code class="language-bash">python train.py
+--experiment_name check-train-1
+--feedback_method sample2step --instruction_from reverie --batch_size=100
+--en_nhead 6 --en_nlayer 2 --use_glove
+--num_multihead 8 --num_layer 4
+--max_degree 15 --object_top_n 5 --short_cut --num_gcn 3
+--use_angle_distance_reward --soft_room_label
+--loss_weight 5 1 0 1'
+</code></pre>
+<ol>
+<li>vscode按住 shift+alt+鼠标左键，进行连续多行编辑，将所有行数转为一行，并转换为空格隔开。</li>
+<li>vscode中按 alt+z，开启自动换行，使得所有内容可见</li>
+<li>vscode里圈中空格，然后按control+d，选择所有空格，进行多位置编辑，改成&quot;,&quot;</li>
+<li>在首尾添加&quot;，大功告成</li>
+</ol>
+<h2 id="调试运行时">调试运行时</h2>
+<ol>
+<li>可以设置断点并查看所有断点问题</li>
+<li>可以随时中断并查看调用堆栈</li>
+<li>可以step in  step out  step over  continue四按钮，在python里step in不会进入标准库中，如果不小心进入函数，可以step out跳出，如果不想进入函数，可以使用step over。</li>
+</ol>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="https://loycine.github.io/tag/aInIY5HKz/" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://loycine.github.io/post/wo-de-qing-mei-zhu-ma-si-shui-qing-chun-ta-nian-hua/">
+                  <h3 class="post-title">
+                    似水青春踏年华
+                  </h3>
+                </a>
+              </div>
             
 
             

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2021-09-16T02:39:25.438Z</updated>
+    <updated>2021-09-16T03:04:24.320Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,58 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[科研小站-vscode调试篇（1）]]></title>
+        <id>https://loycine.github.io/post/ke-yan-xiao-zhan-vscode-diao-shi-pian-1/</id>
+        <link href="https://loycine.github.io/post/ke-yan-xiao-zhan-vscode-diao-shi-pian-1/">
+        </link>
+        <updated>2021-09-16T02:41:07.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="生成调试配置文件launchjson">生成调试配置文件launch.json</h2>
+<p>首先点击运行符号和甲壳虫符号-运行，生成python的配置文件</p>
+<pre><code class="language-json">{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Python: ckr&quot;,
+            &quot;type&quot;: &quot;python&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;train.py&quot;,
+            &quot;args&quot;: [&quot;--experiment_name&quot;,&quot;check-train-1&quot;,&quot;--feedback_method&quot;,&quot;sample2step&quot;,&quot;--instruction_from&quot;,&quot;reverie&quot;,&quot;--batch_size=100&quot;,&quot;--en_nhead&quot;,&quot;6&quot;,&quot;--en_nlayer&quot;,&quot;2&quot;,&quot;--use_glove&quot;,&quot;--num_multihead&quot;,&quot;8&quot;,&quot;--num_layer&quot;,&quot;4&quot;,&quot;--max_degree&quot;,&quot;15&quot;,&quot;--object_top_n&quot;,&quot;5&quot;,&quot;--short_cut&quot;,&quot;--num_gcn&quot;,&quot;3&quot;,&quot;--use_angle_distance_reward&quot;,&quot;--soft_room_label&quot;,&quot;--loss_weight&quot;,&quot;5&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;],
+            &quot;env&quot;: {&quot;CUDA_VISIBLE_DEVICES&quot;: &quot;0&quot;},
+            &quot;console&quot;: &quot;integratedTerminal&quot;
+        }
+    ]
+}
+</code></pre>
+<p>其中name是随意取的，program是要运行的文件，args是运行的参数，env是运行的环境变量。</p>
+<h2 id="对args进行处理">对args进行处理</h2>
+<p>args要是字符串数组，字符串要用引号包括，用逗号分割，这就需要我们对命令行参数进行处理。</p>
+<pre><code class="language-bash">python train.py
+--experiment_name check-train-1
+--feedback_method sample2step --instruction_from reverie --batch_size=100
+--en_nhead 6 --en_nlayer 2 --use_glove
+--num_multihead 8 --num_layer 4
+--max_degree 15 --object_top_n 5 --short_cut --num_gcn 3
+--use_angle_distance_reward --soft_room_label
+--loss_weight 5 1 0 1'
+</code></pre>
+<ol>
+<li>vscode按住 shift+alt+鼠标左键，进行连续多行编辑，将所有行数转为一行，并转换为空格隔开。</li>
+<li>vscode中按 alt+z，开启自动换行，使得所有内容可见</li>
+<li>vscode里圈中空格，然后按control+d，选择所有空格，进行多位置编辑，改成&quot;,&quot;</li>
+<li>在首尾添加&quot;，大功告成</li>
+</ol>
+<h2 id="调试运行时">调试运行时</h2>
+<ol>
+<li>可以设置断点并查看所有断点问题</li>
+<li>可以随时中断并查看调用堆栈</li>
+<li>可以step in  step out  step over  continue四按钮，在python里step in不会进入标准库中，如果不小心进入函数，可以step out跳出，如果不想进入函数，可以使用step over。</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[似水青春踏年华]]></title>
         <id>https://loycine.github.io/post/wo-de-qing-mei-zhu-ma-si-shui-qing-chun-ta-nian-hua/</id>
