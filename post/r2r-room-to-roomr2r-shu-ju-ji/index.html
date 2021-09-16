@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Gridea博客搭建流程 | 罗宇成的博客</title>
+<title>R2R:  Room-to-Room（R2R 数据集） | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,17 +24,9 @@
 
 
 
-    <meta name="description" content="
-Github Pages
-创建仓库
-
-首先在github新建一个用户名相同的仓库，用户名.github.io
-然后在setting中确认自己的github已经开通了github服务。
-
-创建token
-
-github创建token，勾选上..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="Vision-and-Language Navigation: Interpreting visually-grounded navigation instructions in real environment
+来自 澳大利亚阿德莱德大学..." />
+    <meta name="keywords" content="VLN" />
   </head>
   <body>
     <div id="app" class="main">
@@ -115,42 +107,24 @@ github创建token，勾选上..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Gridea博客搭建流程</h2>
-            <div class="post-date">2021-07-08</div>
+            <h2 class="post-title">R2R:  Room-to-Room（R2R 数据集）</h2>
+            <div class="post-date">2021-07-13</div>
             
             <div class="post-content" v-pre>
-              <!-- more -->
-<h1 id="github-pages">Github Pages</h1>
-<h2 id="创建仓库">创建仓库</h2>
+              <p>Vision-and-Language Navigation: Interpreting visually-grounded navigation instructions in real environment<br>
+来自 澳大利亚阿德莱德大学，Vision-and-Language Navigation(VLN) 的一篇工作，发表在CVPR 2018。</p>
 <ul>
-<li>首先在github新建一个用户名相同的仓库，用户名.github.io</li>
-<li>然后在setting中确认自己的github已经开通了github服务。</li>
+<li>提出了Matterport3D Simulator，一个基于真实场景图的大规模强化学习环境。和之前的合成的强化学习环境相比，真实图像的环境更加具有视觉和语义多样性，可以最大化智能体迁移到真实场景应用的潜力。</li>
+<li>基于提出的Matterport3D环境，本文提供了第一个基准数据集，Room-to-Room(R2R)，在真实建筑中VLN。该数据集包含21,567个词汇，平均句长29词的航行指令。和之前的vision-language任务相关的数据集相比，本数据集第一次考虑了agent的可移动和可控制摄像头这一点。而且本文使用的是全景图，而不是textured meshed纹理网格图，可以保留几何尤其是窗户和玻璃。</li>
+<li>本文还提供了seq2seq的网络建立了baseline。</li>
 </ul>
-<h2 id="创建token">创建token</h2>
-<ul>
-<li>github创建token，勾选上repo权限。</li>
-</ul>
-<h2 id="开启文章评论">开启文章评论</h2>
-<ul>
-<li>创建github OAuth Application，然后将Client ID和Client Secret复制到本地。</li>
-</ul>
-<h1 id="gridea客户端">Gridea客户端</h1>
-<ul>
-<li>在Gridea的配置-基础配置中填写相应的配置来配置同步。</li>
-<li>在Gridea的配置-评论配置中填写相应的评论，评论是Gitalk的，是基于Github Issue和Preact开发的评论插件。</li>
-</ul>
-<h1 id="proxifier全局代理">Proxifier全局代理</h1>
-<p>因为Gridea常常连不上Github，所以搭建Socks5代理然后搭建Proxifier进行远程同步。<br>
-在Github中设置Profile- Proxy Servers 和 Profile- Proxification Rules。</p>
-<h1 id="reference">Reference</h1>
-<p>[1] <a href="https://zhuanlan.zhihu.com/p/71681116">Gridea 上手教程——小白也可以用的 GitHub Pages 搭建工具</a></p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://loycine.github.io/tag/aInIY5HKz/" class="tag">
-                    Gridea
+                  <a href="https://loycine.github.io/tag/-WEnHOlPZ/" class="tag">
+                    VLN
                   </a>
                 
               </div>
@@ -158,9 +132,9 @@ github创建token，勾选上..." />
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://loycine.github.io/post/hello-gridea/">
+                <a href="https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    Gridea博客搭建流程
                   </h3>
                 </a>
               </div>

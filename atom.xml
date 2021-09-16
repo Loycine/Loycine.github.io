@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2021-07-08T09:15:14.464Z</updated>
+    <updated>2021-09-16T02:39:25.438Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,281 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[似水青春踏年华]]></title>
+        <id>https://loycine.github.io/post/wo-de-qing-mei-zhu-ma-si-shui-qing-chun-ta-nian-hua/</id>
+        <link href="https://loycine.github.io/post/wo-de-qing-mei-zhu-ma-si-shui-qing-chun-ta-nian-hua/">
+        </link>
+        <updated>2021-07-22T15:11:14.000Z</updated>
+        <content type="html"><![CDATA[<p>童稚时代，无忧无虑，数学英语小荷才露尖尖角。</p>
+<p>诗词年华：重视语文和才艺。为赋新词强说恋爱。数学英语进一步加强，成为强势科目。</p>
+<p>青春见习：大学时期认识全国各地的同学，大一大二重点修习课业，大三在帮老师做实验室项目和两端暑期实习</p>
+<p>深切反思：大四时期。思考自己除了技能，还应该有什么样的生活和爱情。总结出身体，硬实力，软实力三要素。</p>
+<p>全面社交：研一时期，开眼看世界，利用所有可以社交的机会去学习和人相处，参加各种学生组织和心理咨询。</p>
+<p>20岁改革，准确地说是22岁改革，旨在建设更好的身体，并留出足够多的时间。这项改革可能会影响我的一生。<br>
+可是改革只是决定了时间的空余，改革解放的时间具体要怎么利用，如何锻炼更好的身体，还是要自己考虑。</p>
+<ol>
+<li>ACM题一定要下数据集或者跑模型的时候再做。</li>
+<li>学习视频也一定要在上述两点的空余时间再看。</li>
+<li>拿下VLN，闲暇时间做做SLAM，以成毕业论文。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[技能点]]></title>
+        <id>https://loycine.github.io/post/ji-neng-dian/</id>
+        <link href="https://loycine.github.io/post/ji-neng-dian/">
+        </link>
+        <updated>2021-07-22T07:59:41.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>熟练使用科学上网 v2ray, shadowsocks,shadowsocksr, ss-local, sslocal ，proxychains</li>
+<li>vim的使用，set paste set nopaste set pastetoggle=<F11>，调整粘贴模式才能更好地复制粘贴</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ProgrammingContest - Python模板]]></title>
+        <id>https://loycine.github.io/post/programmingcontest-python-mo-ban/</id>
+        <link href="https://loycine.github.io/post/programmingcontest-python-mo-ban/">
+        </link>
+        <updated>2021-07-15T02:36:34.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="流程">流程</h1>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="流程">流程</h1>
+<!-- more -->
+<p>模拟C++ 中的main函数和全局变量机制</p>
+<p>全局变量在外，输入输出在外，主体流程调用solve函数<br>
+核心算法函数（如dfs，bfs）中记得global ans，来使用全局变量<br>
+主体处理流程函数solve，以便快速return避免异常情况</p>
+<h1 id="输入输出-mapint-input-split">输入输出 map(int, input ().split())</h1>
+<h2 id="python和c的不同之处">Python和C++的不同之处</h2>
+<h3 id="先來看看c">先來看看C++</h3>
+<p>作为以前的C++参赛选手，对C++的更为熟悉，然而python有和C++的不同之处。C++的输入输出只要包括File IO 和 Std IO<br>
+标准IO中有C++的版本cin, cout, getline(cin, line)，stringstream ss(line);<br>
+C++连续多行读入然后进行拆分</p>
+<pre><code class="language-cpp">string line;
+int main()
+{
+    while(getline(cin,line))
+    {
+        stringstream ss(line);
+        int x,sum=0;
+        while(ss&gt;&gt;x) sum+=x;
+        cout &lt;&lt; sum &lt;&lt; &quot;\n&quot;;
+    }
+}
+</code></pre>
+<p>也有C的版本scanf, printf,  c = getchar(),  都是以EOF机制作为结尾，fgets(line, strlen(line), stdin)以NULL作为结尾, putchar(c)</p>
+<pre><code class="language-c">char line[100];
+int main()
+{
+    while(fgets(line, sizeof(line), stdin))  
+    {
+        //fgets读入的字符串中带有\n，gets不带有但gets已经被C++11弃用
+        int len = strlen(line);
+        line[len-1] = '\0';
+        puts(line);
+    }
+}
+</code></pre>
+<h3 id="差异性">差异性</h3>
+<ol>
+<li>C++中有EOF机制，python中实现EOF机制要使用异常或者sys模块。</li>
+</ol>
+<pre><code class="language-python"># 异常来解决EOF
+while True:
+    try:
+        a = list(map(int, input().split()))
+        print(a[0] + a[1])
+    except EOFError:
+        break
+</code></pre>
+<pre><code class="language-python"># sys.stdin简化EOF逻辑
+import sys
+for line in sys.stdin:
+    a = line.split()
+    print(int(a[0])+int(a[1]))
+</code></pre>
+<ol start="2">
+<li>C++中是格式化读取，都是读取具体的变量，如int，浮点数，字符串，是细粒度的读取，还可以控制读取的位数。python中的input函数和sys.stdin都是按行读取，且都是字符串，要自己分割空格，要自己转换类型。<br>
+不管是哪种方法，都可以对任何形式的输入进行处理。一次只能读取一行,返回值均为string类型的。<br>
+即使数据是int类型的，他也会把得到的数字转化为字符串。这就需要我们自己对数据进行处理得到我们想要的数据基本类型。<br>
+数据的处理通常依赖于strip()方法和split()方法。<br>
+strip():去掉字符串首尾的指定字符，默认为换行符和空格。<br>
+split():以某个字串或者字符拆分已有的字符串，默认情况以空格拆分。<br>
+以后只以input为例</li>
+</ol>
+<ul>
+<li>读取一行输入，用map生成可迭代对象</li>
+</ul>
+<pre><code class="language-python">n, m = map(int, input().split())
+line = list(map(int, input().strip().split()))
+</code></pre>
+<ul>
+<li>读取多行输入（指定行数）<br>
+第一行为给定输入的大小，比如n行数，用n,m接收输入的大小<br>
+用list接收下面输入的矩阵</li>
+</ul>
+<pre><code class="language-python">n, m = map(int, input().strip().split())
+a = []
+for i in range(n):
+    a.append(list(map(int, input().strip().split())))
+</code></pre>
+<ul>
+<li>读取多行输入（不指定行数）</li>
+</ul>
+<pre><code class="language-python">a = []
+import sys
+for line in sys.stdin:
+    words =list(map(int, line.split()))
+    a.append(words)
+</code></pre>
+<h1 id="题目示例">题目示例</h1>
+<h2 id="huawei机试20210714">HUAWEI机试20210714</h2>
+<pre><code class="language-python">m = int(input())
+n = int(input())
+
+mp = []
+for i in range(m):
+    line = input().strip().split()
+    mp.append(line)
+
+is_vis = [[0 for i in range(n)] for j in range(m)]
+
+dx = [1, -1, 0, 0,1,-1]
+dy = [0, 0, 1, -1,-1,1]
+
+def dfs(cx, cy):
+    history = [(cx, cy, 0)]
+    while history:
+        cx, cy, i = history.pop()
+
+        is_vis[cy][cx] = 1
+        nx = cx + dx[i]
+        ny = cy + dy[i]
+        i += 1
+        if i &lt; 6:
+            history.append((cx, cy, i))
+        
+        if(nx &gt;= n or nx &lt; 0 or ny &gt;= m or ny &lt; 0 or is_vis[ny][nx]):
+            continue
+        
+        if(mp[ny][nx] == 'P'):
+            continue
+
+        history.append((nx, ny, 0))
+
+
+cnt = 0
+def solve():
+    global cnt
+    for j in range(m):
+        for i in range(n):
+            if not is_vis[j][i] and mp[j][i] == 'C':
+                cnt = cnt + 1
+                dfs(i, j)
+                
+solve()
+print(cnt)
+</code></pre>
+<pre><code class="language-python">ans = 0
+
+def dfs(start ,end):
+    temp = start
+    while(temp &lt; end):
+        if(temp+1 == end):
+            break
+        if(s[temp+1] &lt; s[temp]):
+            break
+        start = temp
+        temp = temp +1
+    
+    temp = end-1
+    while(temp &gt;= start):
+        if(temp-1 &lt; start):
+            break
+        if(s[temp-1] &lt; s[temp]):
+            break
+        end = temp
+        temp = temp -1
+        
+    global ans
+    if(end - start &lt;= 0):
+        return
+    if(end - start == 1):
+        ans = ans + s[start]
+        return
+    
+    min_num = 100000
+    for i in range(start, end):
+        min_num = min(min_num, s[i])
+    for i in range(start, end):
+        s[i] = s[i] - min_num
+    ans = ans + min_num
+    
+    last = start
+    for i in range(start, end):
+        if(s[i] == 0):
+            dfs(last, i)
+            last = i+1
+    dfs(last, end)
+
+def solve():
+    if(n == 0):
+        print(-1)
+        return
+    for i in range(0, n):
+        if(s[i] &lt; 0 or s[i] &gt; 100000):
+            print(-1)
+            return
+    
+    dfs(0, n)
+    print(ans)
+
+s = list(map(int, input().split()))
+n = len(s)
+solve()
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Tmux列表维护]]></title>
+        <id>https://loycine.github.io/post/tmux-lie-biao-wei-hu/</id>
+        <link href="https://loycine.github.io/post/tmux-lie-biao-wei-hu/">
+        </link>
+        <updated>2021-07-14T03:28:21.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="cpu0">cpu0</h1>
+<table>
+<thead>
+<tr>
+<th>Tmux</th>
+<th>服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>srv</td>
+<td>部署ml-experiment服务</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[R2R:  Room-to-Room（R2R 数据集）]]></title>
+        <id>https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/</id>
+        <link href="https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/">
+        </link>
+        <updated>2021-07-13T03:37:30.000Z</updated>
+        <content type="html"><![CDATA[<p>Vision-and-Language Navigation: Interpreting visually-grounded navigation instructions in real environment<br>
+来自 澳大利亚阿德莱德大学，Vision-and-Language Navigation(VLN) 的一篇工作，发表在CVPR 2018。</p>
+<ul>
+<li>提出了Matterport3D Simulator，一个基于真实场景图的大规模强化学习环境。和之前的合成的强化学习环境相比，真实图像的环境更加具有视觉和语义多样性，可以最大化智能体迁移到真实场景应用的潜力。</li>
+<li>基于提出的Matterport3D环境，本文提供了第一个基准数据集，Room-to-Room(R2R)，在真实建筑中VLN。该数据集包含21,567个词汇，平均句长29词的航行指令。和之前的vision-language任务相关的数据集相比，本数据集第一次考虑了agent的可移动和可控制摄像头这一点。而且本文使用的是全景图，而不是textured meshed纹理网格图，可以保留几何尤其是窗户和玻璃。</li>
+<li>本文还提供了seq2seq的网络建立了baseline。</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Gridea博客搭建流程]]></title>
         <id>https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/</id>
