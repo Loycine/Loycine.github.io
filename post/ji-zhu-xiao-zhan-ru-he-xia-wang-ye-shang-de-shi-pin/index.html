@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Tmux列表维护 | 罗宇成的博客</title>
+<title>技术小站-如何下网页上的视频（1） | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,22 +24,13 @@
 
 
 
-    <meta name="description" content="cpu0
+    <meta name="description" content="在网页上能看到的视频，一般都是可以下载到的。
 
+按F12，打开浏览器控制台。
+选择到Network项，并在Filter那一栏选择Media。
+选中正在播放的视频，右键，选择Copy，选择Copy as cURL(bash)
 
-
-Tmux
-服务
-
-
-
-
-srv
-部署ml-experiment服务
-
-
-
-..." />
+curl 'h..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -121,34 +112,42 @@ srv
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Tmux列表维护</h2>
-            <div class="post-date">2021-07-14</div>
+            <h2 class="post-title">技术小站-如何下网页上的视频（1）</h2>
+            <div class="post-date">2021-11-04</div>
             
             <div class="post-content" v-pre>
-              <h1 id="cpu0">cpu0</h1>
-<table>
-<thead>
-<tr>
-<th>Tmux</th>
-<th>服务</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>srv</td>
-<td>部署ml-experiment服务</td>
-</tr>
-</tbody>
-</table>
+              <p>在网页上能看到的视频，一般都是可以下载到的。</p>
+<ol>
+<li>按F12，打开浏览器控制台。</li>
+<li>选择到Network项，并在Filter那一栏选择Media。</li>
+<li>选中正在播放的视频，右键，选择Copy，选择Copy as cURL(bash)</li>
+</ol>
+<pre><code>curl 'https://yunluzhi-az-1258344699.file.myqcloud.com/cos/200000001/1452892568504299520/1452892568504299521/TM-20211026133701-775823750-recording-1.mp4?token=XXXX' \
+  -H 'authority: yunluzhi-az-1258344699.file.myqcloud.com' \
+  -H 'sec-ch-ua: &quot;Google Chrome&quot;;v=&quot;95&quot;, &quot;Chromium&quot;;v=&quot;95&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36' \
+  -H 'sec-ch-ua-platform: &quot;Windows&quot;' \
+  -H 'accept: */*' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-dest: video' \
+  -H 'referer: https://meeting.tencent.com/' \
+  -H 'accept-language: zh-CN,zh-TW;q=0.9,zh;q=0.8,en;q=0.7' \
+  -H 'range: bytes=0-' \
+  --compressed
+</code></pre>
+<p>然后这就是bash里的内容，视频常常是按段播放的，这里把Header中的range字段删去。<br>
+然后在Windows里的WSL里就可以进行下载啦。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/">
+                <a href="https://loycine.github.io/post/ke-yan-xiao-zhan-vscode-diao-shi-pian-1/">
                   <h3 class="post-title">
-                    R2R:  Room-to-Room（R2R 数据集）
+                    科研小站-vscode调试篇（1）
                   </h3>
                 </a>
               </div>

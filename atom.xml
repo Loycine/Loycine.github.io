@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2021-09-16T03:04:24.320Z</updated>
+    <updated>2021-11-24T03:39:42.884Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,64 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[科研小站-VLN Simulator的环境配置（2）]]></title>
+        <id>https://loycine.github.io/post/ke-yan-xiao-zhan-vln-simulator-de-huan-jing-pei-zhi-2/</id>
+        <link href="https://loycine.github.io/post/ke-yan-xiao-zhan-vln-simulator-de-huan-jing-pei-zhi-2/">
+        </link>
+        <updated>2021-11-24T03:17:41.000Z</updated>
+        <content type="html"><![CDATA[<p>VLN（Vision and language Navigation）的任务中常常需要使用simulator。</p>
+<pre><code class="language-python">import sys
+sys.path.append('Matterport3DSimulator/build')
+import MatterSim
+</code></pre>
+<p>也就是说我们要在python中加载MatterSim.cpython-38-x86_64-linux-gnu.so<br>
+因为目前conda环境是在Ceph上，如果报错的话，只可能是系统中的有些包未安装或者未匹配。</p>
+<p>例如说，遇到 libGLEW.so.2.1: cannot open shared object file.<br>
+那我们主要去看libGLEW安装的问题：</p>
+<pre><code class="language-bash">dpkg -S libGLEW
+libglew-dev:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so
+libglew2.1:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so.2.1
+libglew2.1:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so.2.1.0
+</code></pre>
+<pre><code class="language-bash">sudo apt install libglew2.1
+</code></pre>
+<p>更全面一点，我们可以看库中全部的依赖：</p>
+<pre><code class="language-python">ldd MatterSim.cpython-38-x86_64-linux-gnu.so
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[技术小站-如何下网页上的视频（1）]]></title>
+        <id>https://loycine.github.io/post/ji-zhu-xiao-zhan-ru-he-xia-wang-ye-shang-de-shi-pin/</id>
+        <link href="https://loycine.github.io/post/ji-zhu-xiao-zhan-ru-he-xia-wang-ye-shang-de-shi-pin/">
+        </link>
+        <updated>2021-11-04T08:55:34.000Z</updated>
+        <content type="html"><![CDATA[<p>在网页上能看到的视频，一般都是可以下载到的。</p>
+<ol>
+<li>按F12，打开浏览器控制台。</li>
+<li>选择到Network项，并在Filter那一栏选择Media。</li>
+<li>选中正在播放的视频，右键，选择Copy，选择Copy as cURL(bash)</li>
+</ol>
+<pre><code>curl 'https://yunluzhi-az-1258344699.file.myqcloud.com/cos/200000001/1452892568504299520/1452892568504299521/TM-20211026133701-775823750-recording-1.mp4?token=XXXX' \
+  -H 'authority: yunluzhi-az-1258344699.file.myqcloud.com' \
+  -H 'sec-ch-ua: &quot;Google Chrome&quot;;v=&quot;95&quot;, &quot;Chromium&quot;;v=&quot;95&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36' \
+  -H 'sec-ch-ua-platform: &quot;Windows&quot;' \
+  -H 'accept: */*' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: no-cors' \
+  -H 'sec-fetch-dest: video' \
+  -H 'referer: https://meeting.tencent.com/' \
+  -H 'accept-language: zh-CN,zh-TW;q=0.9,zh;q=0.8,en;q=0.7' \
+  -H 'range: bytes=0-' \
+  --compressed
+</code></pre>
+<p>然后这就是bash里的内容，视频常常是按段播放的，这里把Header中的range字段删去。<br>
+然后在Windows里的WSL里就可以进行下载啦。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[科研小站-vscode调试篇（1）]]></title>
         <id>https://loycine.github.io/post/ke-yan-xiao-zhan-vscode-diao-shi-pian-1/</id>

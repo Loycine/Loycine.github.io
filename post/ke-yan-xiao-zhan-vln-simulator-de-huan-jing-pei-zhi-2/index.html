@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Tmux列表维护 | 罗宇成的博客</title>
+<title>科研小站-VLN Simulator的环境配置（2） | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,22 +24,10 @@
 
 
 
-    <meta name="description" content="cpu0
-
-
-
-Tmux
-服务
-
-
-
-
-srv
-部署ml-experiment服务
-
-
-
-..." />
+    <meta name="description" content="VLN（Vision and language Navigation）的任务中常常需要使用simulator。
+import sys
+sys.path.append('Matterport3DSimulator/build')
+import..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -121,34 +109,38 @@ srv
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Tmux列表维护</h2>
-            <div class="post-date">2021-07-14</div>
+            <h2 class="post-title">科研小站-VLN Simulator的环境配置（2）</h2>
+            <div class="post-date">2021-11-24</div>
             
             <div class="post-content" v-pre>
-              <h1 id="cpu0">cpu0</h1>
-<table>
-<thead>
-<tr>
-<th>Tmux</th>
-<th>服务</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>srv</td>
-<td>部署ml-experiment服务</td>
-</tr>
-</tbody>
-</table>
+              <p>VLN（Vision and language Navigation）的任务中常常需要使用simulator。</p>
+<pre><code class="language-python">import sys
+sys.path.append('Matterport3DSimulator/build')
+import MatterSim
+</code></pre>
+<p>也就是说我们要在python中加载MatterSim.cpython-38-x86_64-linux-gnu.so<br>
+因为目前conda环境是在Ceph上，如果报错的话，只可能是系统中的有些包未安装或者未匹配。</p>
+<p>例如说，遇到 libGLEW.so.2.1: cannot open shared object file.<br>
+那我们主要去看libGLEW安装的问题：</p>
+<pre><code class="language-bash">dpkg -S libGLEW
+libglew-dev:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so
+libglew2.1:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so.2.1
+libglew2.1:amd64: /usr/lib/x86_64-linux-gnu/libGLEW.so.2.1.0
+</code></pre>
+<pre><code class="language-bash">sudo apt install libglew2.1
+</code></pre>
+<p>更全面一点，我们可以看库中全部的依赖：</p>
+<pre><code class="language-python">ldd MatterSim.cpython-38-x86_64-linux-gnu.so
+</code></pre>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/">
+                <a href="https://loycine.github.io/post/ji-zhu-xiao-zhan-ru-he-xia-wang-ye-shang-de-shi-pin/">
                   <h3 class="post-title">
-                    R2R:  Room-to-Room（R2R 数据集）
+                    技术小站-如何下网页上的视频（1）
                   </h3>
                 </a>
               </div>
