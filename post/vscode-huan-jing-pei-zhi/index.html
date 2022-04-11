@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>科研小站-conda，pip配置镜像源（3） | 罗宇成的博客</title>
+<title>vscode环境配置 | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,9 +24,10 @@
 
 
 
-    <meta name="description" content="pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-
-pip config set install.trusted-host https://mir..." />
+    <meta name="description" content="vscode锁无法获取
+vscode也存在一定的坑，例如说：
+Server installation process already in progress - waiting and retrying
+Acquiring lock on ..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -108,25 +109,24 @@ pip config set install.trusted-host https://mir..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">科研小站-conda，pip配置镜像源（3）</h2>
-            <div class="post-date">2022-03-28</div>
+            <h2 class="post-title">vscode环境配置</h2>
+            <div class="post-date">2022-04-11</div>
             
             <div class="post-content" v-pre>
-              <pre><code class="language-bash">pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-
-pip config set install.trusted-host https://mirrors.aliyun.com
-</code></pre>
-<pre><code class="language-bash">python -m pip install --upgrade pip
-</code></pre>
+              <h1 id="vscode锁无法获取">vscode锁无法获取</h1>
+<p>vscode也存在一定的坑，例如说：<br>
+Server installation process already in progress - waiting and retrying<br>
+Acquiring lock on ~/.vscode-server/bin/<br>
+一般的解决方法就是删除bin目录，然后重新下载，这是因为不同电脑的vscode版本可能不同，如果不同版本的vscode同样来连接服务器，就会存在一些锁的问题。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://loycine.github.io/post/ke-yan-xiao-zhan-vln-simulator-de-huan-jing-pei-zhi-2/">
+                <a href="https://loycine.github.io/post/ke-yan-xiao-zhan-condapip-pei-zhi-jing-xiang-yuan-3/">
                   <h3 class="post-title">
-                    科研小站-VLN Simulator的环境配置（2）
+                    科研小站-conda，pip配置镜像源（3）
                   </h3>
                 </a>
               </div>

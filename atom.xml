@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2022-03-28T04:00:45.127Z</updated>
+    <updated>2022-04-11T03:57:32.138Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[vscode环境配置]]></title>
+        <id>https://loycine.github.io/post/vscode-huan-jing-pei-zhi/</id>
+        <link href="https://loycine.github.io/post/vscode-huan-jing-pei-zhi/">
+        </link>
+        <updated>2022-04-11T03:54:13.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="vscode锁无法获取">vscode锁无法获取</h1>
+<p>vscode也存在一定的坑，例如说：<br>
+Server installation process already in progress - waiting and retrying<br>
+Acquiring lock on ~/.vscode-server/bin/<br>
+一般的解决方法就是删除bin目录，然后重新下载，这是因为不同电脑的vscode版本可能不同，如果不同版本的vscode同样来连接服务器，就会存在一些锁的问题。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[科研小站-conda，pip配置镜像源（3）]]></title>
         <id>https://loycine.github.io/post/ke-yan-xiao-zhan-condapip-pei-zhi-jing-xiang-yuan-3/</id>
@@ -407,39 +420,6 @@ solve()
 <li>基于提出的Matterport3D环境，本文提供了第一个基准数据集，Room-to-Room(R2R)，在真实建筑中VLN。该数据集包含21,567个词汇，平均句长29词的航行指令。和之前的vision-language任务相关的数据集相比，本数据集第一次考虑了agent的可移动和可控制摄像头这一点。而且本文使用的是全景图，而不是textured meshed纹理网格图，可以保留几何尤其是窗户和玻璃。</li>
 <li>本文还提供了seq2seq的网络建立了baseline。</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Gridea博客搭建流程]]></title>
-        <id>https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/</id>
-        <link href="https://loycine.github.io/post/gridea-bo-ke-da-jian-liu-cheng/">
-        </link>
-        <updated>2021-07-08T08:44:10.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<h1 id="github-pages">Github Pages</h1>
-<h2 id="创建仓库">创建仓库</h2>
-<ul>
-<li>首先在github新建一个用户名相同的仓库，用户名.github.io</li>
-<li>然后在setting中确认自己的github已经开通了github服务。</li>
-</ul>
-<h2 id="创建token">创建token</h2>
-<ul>
-<li>github创建token，勾选上repo权限。</li>
-</ul>
-<h2 id="开启文章评论">开启文章评论</h2>
-<ul>
-<li>创建github OAuth Application，然后将Client ID和Client Secret复制到本地。</li>
-</ul>
-<h1 id="gridea客户端">Gridea客户端</h1>
-<ul>
-<li>在Gridea的配置-基础配置中填写相应的配置来配置同步。</li>
-<li>在Gridea的配置-评论配置中填写相应的评论，评论是Gitalk的，是基于Github Issue和Preact开发的评论插件。</li>
-</ul>
-<h1 id="proxifier全局代理">Proxifier全局代理</h1>
-<p>因为Gridea常常连不上Github，所以搭建Socks5代理然后搭建Proxifier进行远程同步。<br>
-在Github中设置Profile- Proxy Servers 和 Profile- Proxification Rules。</p>
-<h1 id="reference">Reference</h1>
-<p>[1] <a href="https://zhuanlan.zhihu.com/p/71681116">Gridea 上手教程——小白也可以用的 GitHub Pages 搭建工具</a></p>
 ]]></content>
     </entry>
 </feed>
