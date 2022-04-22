@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2022-04-11T03:57:32.138Z</updated>
+    <updated>2022-04-22T03:46:34.386Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,164 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[C++和Python相互调用]]></title>
+        <id>https://loycine.github.io/post/che-python-xiang-hu-diao-yong/</id>
+        <link href="https://loycine.github.io/post/che-python-xiang-hu-diao-yong/">
+        </link>
+        <updated>2022-04-22T02:25:33.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="background">Background</h1>
+<p>最近实验室有一个项目要用遗传算法和粒子群算法解决问题，但是没有找到在windows上合适的C++库，但是Python的库很多（例如说pymoo： Multi-objective Optimization in Python），所以决定采用在C++中嵌入python解释器的方法，使用C++调用Python的接口。</p>
+<h1 id="c调用python">C++调用Python</h1>
+<h2 id="环境安装">环境安装</h2>
+<h3 id="安装python到指定文件夹">安装Python到指定文件夹</h3>
+<p>在Windows内离线部署python：<br>
+https://www.python.org/ftp/python<br>
+例如说我选择的是3.8.9版本：<br>
+https://www.python.org/ftp/python/3.8.9/python-3.8.9-amd64.exe<br>
+然后选择安装到指定文件夹的Python38目录下。</p>
+<h3 id="安装python第三方库">安装Python第三方库</h3>
+<p>pip安装环境依赖<br>
+根据pymoo的指引进行安装</p>
+<pre><code class="language-bash">proxychains4 git clone https://github.com/anyoptimization/pymoo
+</code></pre>
+<p>现在目录格式像这样：</p>
+<pre><code class="language-bash">.
+├── Python38
+│   ├── DLLs
+│   ├── Doc
+│   ├── LICENSE.txt
+│   ├── Lib
+│   ├── NEWS.txt
+│   ├── Scripts
+│   ├── Tools
+│   ├── include
+│   ├── libs
+│   ├── python.exe
+│   ├── python3.dll
+│   ├── python38.dll
+│   ├── pythonw.exe
+│   ├── share
+│   ├── tcl
+│   ├── vcruntime140.dll
+│   └── vcruntime140_1.dll
+└── pymoo
+    ├── LICENSE
+    ├── MANIFEST.in
+    ├── Makefile
+    ├── README.rst
+    ├── data
+    ├── pymoo
+    ├── setup.py
+    └── tests
+</code></pre>
+<p>执行以下命令安装环境</p>
+<pre><code class="language-bash">cd pymoo
+ ..\Python38\python.exe -m pip install .
+</code></pre>
+<h3 id="调试环境">调试环境</h3>
+<p>如果需要在Debug方式下运行，需要将Python38目录下libs目录下的python38.lib copy一份，重命名为python38_d.lib，即可以使用。</p>
+<h3 id="编译设置">编译设置</h3>
+<p>将Python38/include目录设置为包含目录。<br>
+将Python38/libs设置为库目录。<br>
+将Python38.dll拷贝一份到执行文件的目录下。</p>
+<h2 id="编程开发">编程开发</h2>
+<pre><code class="language-c++">#include &lt;Python.h&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+
+vector&lt;vector&lt;double&gt;&gt; list2DToVector2D(PyObject* pReturn) {
+	vector&lt;vector&lt;double&gt;&gt; ret;
+	if (PyList_Check(pReturn)) { 
+		int SizeOfList = PyList_Size(pReturn);
+		for (int i = 0; i &lt; SizeOfList; i++) {
+			PyObject* ListItem = PyList_GetItem(pReturn, i);
+
+			int NumOfItems = PyList_Size(ListItem);
+			vector&lt;double&gt; temp;
+			for (int j = 0; j &lt; NumOfItems; j++) {
+				PyObject* Item = PyList_GetItem(ListItem, j);
+				double result;
+				PyArg_Parse(Item, &quot;d&quot;, &amp;result);
+				temp.push_back(result);
+			}
+			ret.push_back(temp);
+		}
+	}
+	else {
+		cout &lt;&lt; &quot;parse_two_dimension_list error&quot; &lt;&lt; endl; 
+	}
+	return ret;
+}
+
+void showVector2D(vector&lt;vector&lt;double&gt;&gt; v) {
+	for (int i = 0; i &lt; v.size(); i++) {
+		auto&amp; vv = v[i];
+		for (int j = 0; j &lt; vv.size(); j++) {
+			cout &lt;&lt; vv[j] &lt;&lt; &quot; &quot;;
+		}
+		cout &lt;&lt; &quot;\n&quot;;
+	}
+}
+void do_multi_objective_optimization()
+{
+	vector&lt;vector&lt;double&gt;&gt; X;
+	vector&lt;vector&lt;double&gt;&gt; Y;
+
+	PyObject* pModule = NULL;
+	PyObject* pFunc = NULL;
+	PyObject* pDict = NULL;
+	PyObject* pReturn = NULL;
+
+	if (0 == Py_IsInitialized())
+	{
+		cout &lt;&lt; &quot;Initialize error\n&quot;;
+		return;
+	}
+
+	pModule = PyImport_ImportModule(&quot;multi-objective-optimization&quot;);
+	if (!pModule) {
+		cout &lt;&lt; &quot;load error\n&quot;;
+		return;
+	}
+	pDict = PyModule_GetDict(pModule);
+	pFunc = PyDict_GetItemString(pDict, &quot;run&quot;);
+	
+	
+	pReturn = PyEval_CallObject(pFunc, NULL);
+	
+	if (PyTuple_Check(pReturn)) {
+		int sizeOfTuple = PyTuple_Size(pReturn);
+		if (sizeOfTuple == 2) {
+			PyObject* Item;
+			Item = PyTuple_GetItem(pReturn, 0);
+			X = list2DToVector2D(Item);
+			Item = PyTuple_GetItem(pReturn, 1);
+			Y = list2DToVector2D(Item);
+		}
+	}
+	else {
+		cout &lt;&lt; &quot;Not a Tuple&quot; &lt;&lt; endl;
+	}
+
+	
+	showVector2D(X);
+	showVector2D(Y);
+}
+
+
+int main()
+{
+	Py_SetPythonHome(L&quot;D:\\Code\\cpp_py_interpreter\\Python38&quot;);
+	Py_Initialize();
+	do_multi_objective_optimization();
+	Py_Finalize();
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[vscode环境配置]]></title>
         <id>https://loycine.github.io/post/vscode-huan-jing-pei-zhi/</id>
@@ -405,21 +563,6 @@ solve()
 </tr>
 </tbody>
 </table>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[R2R:  Room-to-Room（R2R 数据集）]]></title>
-        <id>https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/</id>
-        <link href="https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/">
-        </link>
-        <updated>2021-07-13T03:37:30.000Z</updated>
-        <content type="html"><![CDATA[<p>Vision-and-Language Navigation: Interpreting visually-grounded navigation instructions in real environment<br>
-来自 澳大利亚阿德莱德大学，Vision-and-Language Navigation(VLN) 的一篇工作，发表在CVPR 2018。</p>
-<ul>
-<li>提出了Matterport3D Simulator，一个基于真实场景图的大规模强化学习环境。和之前的合成的强化学习环境相比，真实图像的环境更加具有视觉和语义多样性，可以最大化智能体迁移到真实场景应用的潜力。</li>
-<li>基于提出的Matterport3D环境，本文提供了第一个基准数据集，Room-to-Room(R2R)，在真实建筑中VLN。该数据集包含21,567个词汇，平均句长29词的航行指令。和之前的vision-language任务相关的数据集相比，本数据集第一次考虑了agent的可移动和可控制摄像头这一点。而且本文使用的是全景图，而不是textured meshed纹理网格图，可以保留几何尤其是窗户和玻璃。</li>
-<li>本文还提供了seq2seq的网络建立了baseline。</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
