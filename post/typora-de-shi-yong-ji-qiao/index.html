@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>VLN | 罗宇成的博客</title>
+<title>Typora的使用技巧 | 罗宇成的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -12,13 +12,21 @@
 <link rel="stylesheet" href="https://loycine.github.io/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
-    <meta name="description" content="大家好，这是我的博客，它记录了过去的点点滴滴，也希望能给大家带来一定的帮助。">
+    <meta name="description" content="ctrl+/，这是切换源代码模式，然后赋值粘贴，再按一次可以切换为格式模式。
+" />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -98,28 +106,35 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: VLN</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://loycine.github.io/post/r2r-room-to-roomr2r-shu-ju-ji/">
-                  <h2 class="post-title">R2R:  Room-to-Room（R2R 数据集）</h2>
-                </a>
-                <div class="post-date">
-                  2021-07-13
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">Typora的使用技巧</h2>
+            <div class="post-date">2022-04-25</div>
+            
+            <div class="post-content" v-pre>
+              <p>ctrl+/，这是切换源代码模式，然后赋值粘贴，再按一次可以切换为格式模式。</p>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://loycine.github.io/post/che-python-xiang-hu-diao-yong/">
+                  <h3 class="post-title">
+                    C++和Python相互调用
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -145,6 +160,29 @@ var app = new Vue({
     hljs.initHighlightingOnLoad()
   </script>
 
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'eb9f875830b176217505',
+        clientSecret: 'f7a2ffca3007bcc8aca9ecbf0a83c30e5ae09177',
+        repo: 'Loycine.github.io',
+        owner: 'Loycine',
+        admin: ['Loycine'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://loycine.github.io</id>
     <title>罗宇成的博客</title>
-    <updated>2022-04-25T02:35:12.049Z</updated>
+    <updated>2022-04-26T06:55:24.282Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://loycine.github.io"/>
     <link rel="self" href="https://loycine.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://loycine.github.io/images/avatar.png</logo>
     <icon>https://loycine.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 罗宇成的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Typora的使用技巧]]></title>
+        <id>https://loycine.github.io/post/typora-de-shi-yong-ji-qiao/</id>
+        <link href="https://loycine.github.io/post/typora-de-shi-yong-ji-qiao/">
+        </link>
+        <updated>2022-04-25T02:36:24.000Z</updated>
+        <content type="html"><![CDATA[<p>ctrl+/，这是切换源代码模式，然后赋值粘贴，再按一次可以切换为格式模式。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C++和Python相互调用]]></title>
         <id>https://loycine.github.io/post/che-python-xiang-hu-diao-yong/</id>
@@ -232,7 +241,9 @@ void do_multi_objective_optimization()
 		cout &lt;&lt; &quot;Not a Tuple&quot; &lt;&lt; endl;
 	}
 
-	
+	Py_DECREF(pReturn);
+	Py_DECREF(pModule);
+    
 	showVector2D(X);
 	showVector2D(Y);
 }
@@ -620,29 +631,6 @@ s = list(map(int, input().split()))
 n = len(s)
 solve()
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Tmux列表维护]]></title>
-        <id>https://loycine.github.io/post/tmux-lie-biao-wei-hu/</id>
-        <link href="https://loycine.github.io/post/tmux-lie-biao-wei-hu/">
-        </link>
-        <updated>2021-07-14T03:28:21.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="cpu0">cpu0</h1>
-<table>
-<thead>
-<tr>
-<th>Tmux</th>
-<th>服务</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>srv</td>
-<td>部署ml-experiment服务</td>
-</tr>
-</tbody>
-</table>
 ]]></content>
     </entry>
 </feed>
